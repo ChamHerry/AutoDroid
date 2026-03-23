@@ -1,0 +1,226 @@
+<mxfile host="app.diagrams.net" modified="2026-03-23" agent="Claude" version="1.0">
+  <diagram id="ui-floaty" name="UI Framework and Floating Window Architecture">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Auto.js UI Framework &amp; Floating Window Architecture" style="text;html=1;fontSize=22;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="300" y="15" width="600" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ===== LEFT: App UI Architecture ===== -->
+        <mxCell id="app-ui-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="450" height="620" as="geometry" />
+        </mxCell>
+        <mxCell id="app-ui-title" value="&lt;b&gt;App UI Layer (:app module)&lt;/b&gt;" style="text;html=1;fontSize=15;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="65" width="350" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- SplashActivity -->
+        <mxCell id="splash" value="&lt;b&gt;SplashActivity&lt;/b&gt;&#xa;LAUNCHER&#xa;800ms delay" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="95" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- MainActivity -->
+        <mxCell id="main" value="&lt;b&gt;MainActivity&lt;/b&gt;&#xa;ViewPager + TabLayout + DrawerLayout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="95" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-splash" style="rounded=1;strokeWidth=1.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="splash" target="main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 5 Tab Fragments -->
+        <mxCell id="tab1" value="&lt;b&gt;MyScriptList&#xa;Fragment&lt;/b&gt;&#xa;ExplorerView&#xa;FAB Menu" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="60" y="160" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tab2" value="&lt;b&gt;Docs&#xa;Fragment&lt;/b&gt;&#xa;WebView" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="150" y="160" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tab3" value="&lt;b&gt;Community&#xa;Fragment&lt;/b&gt;&#xa;WebView" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="230" y="160" width="75" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tab4" value="&lt;b&gt;Market&#xa;Fragment&lt;/b&gt;&#xa;WebView" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="315" y="160" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tab5" value="&lt;b&gt;TaskMgr&#xa;Fragment&lt;/b&gt;&#xa;TaskListRV&#xa;Stop All" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="395" y="160" width="75" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- EditActivity -->
+        <mxCell id="edit" value="&lt;b&gt;EditActivity&lt;/b&gt;&#xa;EditorView + EditorMenu + ToolbarFragment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="260" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edit-detail" value="&lt;b&gt;Editor Components:&lt;/b&gt;&#xa;├─ EditorView (code editor)&#xa;├─ CodeCompletionBar&#xa;├─ NormalToolbar / DebugToolbar / SearchToolbar&#xa;├─ Themes (syntax highlighting)&#xa;├─ Undo/Redo support&#xa;└─ RxJava async file loading" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="310" width="260" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Other Activities -->
+        <mxCell id="other-act" value="&lt;b&gt;Other Activities:&lt;/b&gt;&#xa;├─ SettingsActivity&#xa;├─ LogActivity&#xa;├─ TimedTaskSettingActivity&#xa;├─ BuildActivity (APK build)&#xa;├─ ProjectConfigActivity&#xa;├─ ShortcutCreateActivity&#xa;└─ Login/RegisterActivity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="340" y="260" width="140" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Event Bus -->
+        <mxCell id="eventbus" value="&lt;b&gt;Event Communication&lt;/b&gt;&#xa;├─ EventBus (GreenRobot)&#xa;│  QueryEvent, DrawerOpenEvent&#xa;├─ LocalBroadcastManager&#xa;│  Script finished, status changes&#xa;└─ RxJava Observable&#xa;   Explorers, Database, Download" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="430" width="260" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- NavigationDrawer -->
+        <mxCell id="drawer" value="&lt;b&gt;Navigation Drawer&lt;/b&gt;&#xa;User profile / Settings&#xa;Night mode / About" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="340" y="430" width="140" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Permissions -->
+        <mxCell id="perms" value="&lt;b&gt;Permissions Check Flow&lt;/b&gt;&#xa;├─ SYSTEM_ALERT_WINDOW (floating)&#xa;├─ ACCESSIBILITY_SERVICE (auto)&#xa;├─ READ/WRITE_STORAGE&#xa;└─ FOREGROUND_SERVICE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="550" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Third Party UI -->
+        <mxCell id="tp-ui" value="&lt;b&gt;Third-Party UI Libs&lt;/b&gt;&#xa;├─ AndroidAnnotations&#xa;├─ ButterKnife&#xa;├─ Material Dialogs&#xa;└─ Glide (images)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="280" y="550" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ===== RIGHT TOP: Floating Window System ===== -->
+        <mxCell id="floaty-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="530" y="60" width="520" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="floaty-title" value="&lt;b&gt;Floating Window System&lt;/b&gt;" style="text;html=1;fontSize=15;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="540" y="65" width="300" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- JS floaty call -->
+        <mxCell id="js-floaty" value="&lt;b&gt;JavaScript:&lt;/b&gt;&#xa;floaty.window(xml_layout)&#xa;floaty.rawWindow(view)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="550" y="95" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Floaty API -->
+        <mxCell id="floaty-api" value="&lt;b&gt;Floaty API&lt;/b&gt; (autojs/runtime/api/)&#xa;&#xa;1. FloatingPermission.waitForPermissionGranted()&#xa;2. Create JsWindow instance&#xa;3. UIHandler.post → start FloatyService&#xa;4. window.waitForCreation() [blocking]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="550" y="165" width="310" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f1" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.3;entryY=0;" edge="1" parent="1" source="js-floaty" target="floaty-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Two window types -->
+        <mxCell id="js-resizable" value="&lt;b&gt;JsResizableWindow&lt;/b&gt;&#xa;- Wraps BaseResizableFloatyWindow&#xa;- Draggable title bar&#xa;- Resizable borders&#xa;- setPosition(x,y)&#xa;- setSize(w,h)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=9;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="550" y="275" width="180" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="js-raw" value="&lt;b&gt;JsRawWindow&lt;/b&gt;&#xa;- Wraps RawWindow&#xa;- Full custom layout&#xa;- No decorations&#xa;- setTouchable(bool)&#xa;- setPosition(x,y)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=9;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="750" y="275" width="170" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f2" style="rounded=1;strokeWidth=1.5;exitX=0.3;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="floaty-api" target="js-resizable">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f3" style="rounded=1;strokeWidth=1.5;exitX=0.7;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="floaty-api" target="js-raw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- FloatyService -->
+        <mxCell id="floaty-service" value="&lt;b&gt;FloatyService&lt;/b&gt; (Android Service)&#xa;&#xa;WindowManager.addView(window.getView(), layoutParams)&#xa;Maintains list of active floating windows&#xa;TYPE_PHONE / TYPE_APPLICATION_OVERLAY (O+)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="550" y="400" width="370" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f4" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.3;entryY=0;" edge="1" parent="1" source="js-resizable" target="floaty-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f5" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.7;entryY=0;" edge="1" parent="1" source="js-raw" target="floaty-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Circular Menu (app module) -->
+        <mxCell id="circular-label" value="&lt;b&gt;App Floating Menu (app module)&lt;/b&gt;" style="text;html=1;fontSize=12;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="900" y="95" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="circular" value="&lt;b&gt;FloatyWindowManager&lt;/b&gt;&#xa;├─ showCircularMenu()&#xa;│  → CircularMenu&#xa;│    → CircularMenuFloaty&#xa;│    → CircularActionMenu&#xa;│    → DragGesture&#xa;├─ hideCircularMenu()&#xa;└─ addWindow(FloatyWindow)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=9;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="900" y="120" width="170" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="layout-inspect" value="&lt;b&gt;Layout Inspector&lt;/b&gt;&#xa;├─ LayoutBoundsFloatyWindow&#xa;│  (show control bounds)&#xa;├─ LayoutHierarchyFloatyWindow&#xa;│  (show control tree)&#xa;└─ Quick Settings Tiles&#xa;   LayoutBoundsTile&#xa;   LayoutHierarchyTile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=9;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="900" y="270" width="180" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- ===== BOTTOM: Dynamic UI System ===== -->
+        <mxCell id="dynamic-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="530" y="530" width="520" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="dynamic-title" value="&lt;b&gt;Dynamic UI Layout System (autojs/core/ui/)&lt;/b&gt;" style="text;html=1;fontSize=15;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="540" y="535" width="400" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- JS UI Code -->
+        <mxCell id="js-ui" value='&lt;b&gt;JavaScript "ui" mode:&lt;/b&gt;&#xa;&#xa;"ui";&#xa;ui.layout(&#xa;  &lt;vertical&gt;&#xa;    &lt;text text="Hello" /&gt;&#xa;    &lt;button id="btn" text="Click" /&gt;&#xa;  &lt;/vertical&gt;&#xa;);' style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="550" y="570" width="220" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- UI API -->
+        <mxCell id="ui-api" value="&lt;b&gt;UI API&lt;/b&gt; (ProxyObject)&#xa;&#xa;layout(xml) → inflate + setContentView&#xa;inflate(xml) → DynamicLayoutInflater&#xa;findView(id) → view lookup&#xa;run(fn) → execute on UI thread&#xa;post(fn, delay) → delayed UI exec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="550" y="730" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ui1" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="js-ui" target="ui-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- DynamicLayoutInflater -->
+        <mxCell id="inflater" value="&lt;b&gt;DynamicLayoutInflater&lt;/b&gt;&#xa;&#xa;XML → View tree&#xa;├─ registerViewCreator(name, creator)&#xa;├─ registerViewAttrSetter(name, setter)&#xa;├─ inflate(xml, parent, attachToRoot)&#xa;└─ Flags: DEFAULT | IGNORES_DYNAMIC&#xa;          | JUST_DYNAMIC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="550" y="850" width="220" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ui2" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="ui-api" target="inflater">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Js Widgets -->
+        <mxCell id="widgets" value="&lt;b&gt;Js* Custom Widgets&lt;/b&gt;&#xa;&#xa;Layout:&#xa;├─ JsLinearLayout&#xa;├─ JsFrameLayout&#xa;├─ JsRelativeLayout&#xa;&#xa;Input:&#xa;├─ JsButton&#xa;├─ JsEditText&#xa;├─ JsTextView&#xa;&#xa;Lists:&#xa;├─ JsListView&#xa;├─ JsGridView&#xa;├─ JsSpinner&#xa;&#xa;Other:&#xa;├─ JsWebView&#xa;├─ JsImageView&#xa;├─ JsViewPager&#xa;├─ JsTabLayout&#xa;└─ JsToolbar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="800" y="570" width="130" height="310" as="geometry" />
+        </mxCell>
+
+        <!-- ViewAttributes -->
+        <mxCell id="viewattrs" value="&lt;b&gt;View Attribute Setters&lt;/b&gt;&#xa;&#xa;├─ ViewAttributes (base)&#xa;├─ TextViewAttributes&#xa;├─ ImageViewAttributes&#xa;├─ CardAttributes&#xa;├─ AppbarAttributes&#xa;└─ ResourceParser&#xa;   (dp/sp/color/drawable)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="950" y="570" width="180" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- ===== BOTTOM: INRT UI ===== -->
+        <mxCell id="inrt-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="40" y="700" width="450" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-title" value="&lt;b&gt;INRT Runtime UI (Minimal)&lt;/b&gt;" style="text;html=1;fontSize=15;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="50" y="705" width="300" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inrt-splash2" value="&lt;b&gt;SplashActivity&lt;/b&gt;&#xa;Roboto Medium font&#xa;Permission check&#xa;2.5s delay (first use)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="740" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-log2" value="&lt;b&gt;LogActivity&lt;/b&gt;&#xa;ConsoleView&#xa;(globalConsole binding)&#xa;Real-time script output" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="240" y="740" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-settings" value="&lt;b&gt;SettingsActivity&lt;/b&gt;&#xa;PreferenceFragment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="830" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-inrt1" style="rounded=1;strokeWidth=1.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="inrt-splash2" target="inrt-log2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-inrt-label" value="launch script" style="edgeLabel;html=1;fontSize=9;" vertex="1" connectable="0" parent="arr-inrt1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inrt-flow" value="&lt;b&gt;INRT Launch Flow:&lt;/b&gt;&#xa;SplashActivity → checkPermission()&#xa;→ GlobalProjectLauncher.launch()&#xa;→ shouldHideLogs?&#xa;  ├─ YES: runScript() directly&#xa;  └─ NO: start LogActivity → runScript()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="240" y="830" width="230" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- Connection lines -->
+        <mxCell id="arr-inflater-widgets" style="rounded=1;strokeWidth=1;dashed=1;exitX=1;exitY=0.3;entryX=0;entryY=0.5;" edge="1" parent="1" source="inflater" target="widgets">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-inflater-label" value="creates" style="edgeLabel;html=1;fontSize=9;" vertex="1" connectable="0" parent="arr-inflater-widgets">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arr-inflater-attrs" style="rounded=1;strokeWidth=1;dashed=1;exitX=1;exitY=0.7;entryX=0;entryY=0.5;" edge="1" parent="1" source="inflater" target="viewattrs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-attrs-label" value="applies attrs" style="edgeLabel;html=1;fontSize=9;" vertex="1" connectable="0" parent="arr-inflater-attrs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

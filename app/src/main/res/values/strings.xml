@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AutoDroid</string>
+    <string name="accessibility_service_description">AutoDroid needs accessibility service to automate UI operations, find elements, and perform gestures.</string>
+</resources>

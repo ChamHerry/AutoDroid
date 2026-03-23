@@ -1,0 +1,264 @@
+<mxfile host="app.diagrams.net" modified="2026-03-23" agent="Claude" version="1.0">
+  <diagram id="automator" name="Automator and Accessibility Call Chain">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Auto.js Automator &amp; Accessibility Service Call Chain" style="text;html=1;fontSize=22;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ===== LEFT: Node Search Chain ===== -->
+        <mxCell id="search-title" value="Node Search Chain" style="text;html=1;fontSize=16;fontStyle=5;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="60" y="70" width="250" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- JS Script -->
+        <mxCell id="js1" value="&lt;b&gt;JavaScript Script&lt;/b&gt;&#xa;&#xa;var btn = id(&quot;confirm&quot;).text(&quot;OK&quot;)&#xa;          .clickable(true).findOne();" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="110" width="300" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- UiSelector -->
+        <mxCell id="uiselector" value="&lt;b&gt;UiSelector&lt;/b&gt; (autojs module)&#xa;&#xa;Fluent API → builds UiGlobalSelector&#xa;.id(&quot;confirm&quot;) → addFilter(IdFilter)&#xa;.text(&quot;OK&quot;) → addFilter(TextFilter)&#xa;.clickable(true) → addFilter(BooleanFilter)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="220" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="arr1" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="js1" target="uiselector">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- UiGlobalSelector -->
+        <mxCell id="globalselector" value="&lt;b&gt;UiGlobalSelector&lt;/b&gt; (automator module)&#xa;&#xa;Contains: Selector (composite filter)&#xa;         SearchAlgorithm (DFS/BFS)&#xa;&#xa;findOf(rootNode) → search + filter&#xa;findOneOf(rootNode) → search limit=1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="360" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="arr2" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="uiselector" target="globalselector">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Selector (Composite Filter) -->
+        <mxCell id="selector" value="&lt;b&gt;Selector&lt;/b&gt; (Composite Filter)&#xa;&#xa;LinkedList&lt;Filter&gt; mFilters&#xa;filter(node): AND logic&#xa;  for each filter:&#xa;    if !filter.filter(node) → false&#xa;  return true (all pass)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="510" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="arr3" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="globalselector" target="selector">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Filter Types -->
+        <mxCell id="filters-group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="660" width="300" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="filters-title" value="&lt;b&gt;Filter Types (19 classes)&lt;/b&gt;" style="text;html=1;fontSize=12;fontStyle=1;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="70" y="665" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="f1" value="TextFilters: equals/contains/startsWith/endsWith/matches" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="75" y="690" width="270" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" value="IdFilter: viewIdResourceName matching" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="75" y="710" width="270" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" value="DescFilters: contentDescription matching" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="75" y="730" width="270" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" value="ClassNameFilters: className matching" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="75" y="750" width="270" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" value="BooleanFilter: clickable/scrollable/enabled/..." style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="75" y="770" width="270" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="f6" value="BoundsFilter: equals/inside/contains rect" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="75" y="790" width="270" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="f7" value="IntFilter: depth/row/column/indexInParent" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="75" y="810" width="270" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="f8" value="PackageNameFilter: packageName matching" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="75" y="830" width="270" height="16" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arr4" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="selector" target="filters-group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== RIGHT: Action Execution Chain ===== -->
+        <mxCell id="action-title" value="Action Execution Chain" style="text;html=1;fontSize=16;fontStyle=5;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="500" y="70" width="250" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- JS Action -->
+        <mxCell id="js2" value="&lt;b&gt;JavaScript Action&lt;/b&gt;&#xa;&#xa;btn.click()  |  click(&quot;OK&quot;)&#xa;setText(&quot;...&quot;)  |  scrollDown()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="110" width="280" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- SimpleActionAutomator -->
+        <mxCell id="saa" value="&lt;b&gt;SimpleActionAutomator&lt;/b&gt; (autojs)&#xa;&#xa;click(ActionTarget) → creates SimpleAction&#xa;longClick(ActionTarget)&#xa;setText(ActionTarget, text)&#xa;scrollForward/Backward(ActionTarget)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="220" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="arr5" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="js2" target="saa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ActionFactory -->
+        <mxCell id="factory" value="&lt;b&gt;ActionFactory&lt;/b&gt;&#xa;&#xa;createActionWithTextFilter(action, text, index)&#xa;createActionWithBoundsFilter(action, rect)&#xa;createActionWithIdFilter(action, id)&#xa;&#xa;Returns: SearchTargetAction or DepthFirstSearchTargetAction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="360" width="330" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="arr6" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="saa" target="factory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- SimpleAction hierarchy -->
+        <mxCell id="action-hierarchy" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="510" width="330" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="ah-title" value="&lt;b&gt;SimpleAction Hierarchy&lt;/b&gt;" style="text;html=1;fontSize=12;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="510" y="515" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa-base" value="&lt;b&gt;SimpleAction&lt;/b&gt; (abstract)&#xa;perform(root: UiObject): Boolean" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="545" width="220" height="35" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa-filter" value="&lt;b&gt;FilterAction&lt;/b&gt;&#xa;filter nodes → perform(nodes)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="600" width="170" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-sa1" style="rounded=1;strokeWidth=1;exitX=0.3;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="sa-base" target="sa-filter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa-scroll" value="&lt;b&gt;ScrollAction&lt;/b&gt;&#xa;scroll target node" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="710" y="600" width="110" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-sa2" style="rounded=1;strokeWidth=1;exitX=0.7;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="sa-base" target="sa-scroll">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa-search" value="&lt;b&gt;SearchTargetAction&lt;/b&gt;&#xa;searchTarget(node) → performAction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="515" y="655" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-sa3" style="rounded=1;strokeWidth=1;" edge="1" parent="1" source="sa-filter" target="sa-search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa-dfs" value="&lt;b&gt;DepthFirstSearchTargetAction&lt;/b&gt;&#xa;DFS find first able node in subtree" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="515" y="710" width="210" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-sa4" style="rounded=1;strokeWidth=1;exitX=0.3;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="sa-search" target="sa-dfs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa-up" value="&lt;b&gt;SearchUpTargetAction&lt;/b&gt;&#xa;Walk up parent chain (max 20)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="515" y="755" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-sa5" style="rounded=1;strokeWidth=1;exitX=0.7;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="sa-search" target="sa-up">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arr7" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="factory" target="action-hierarchy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== MIDDLE: Search Algorithm ===== -->
+        <mxCell id="search-alg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="900" width="560" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="sa-title" value="&lt;b&gt;Search Algorithms&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="905" width="200" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dfs-box" value="&lt;b&gt;DFS (Depth-First Search)&lt;/b&gt;&#xa;&#xa;Uses Stack (LinkedList)&#xa;Push children in reverse order&#xa;&#xa;while stack not empty:&#xa;  node = stack.pop()&#xa;  push children[n-1..0]&#xa;  if filter.filter(node):&#xa;    result.add(node)&#xa;    if result.size &gt;= limit: break&#xa;  else: node.recycle()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="935" width="250" height="155" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bfs-box" value="&lt;b&gt;BFS (Breadth-First Search)&lt;/b&gt;&#xa;&#xa;Uses Queue (ArrayDeque)&#xa;Enqueue children in order&#xa;&#xa;while queue not empty:&#xa;  node = queue.poll()&#xa;  enqueue children[0..n-1]&#xa;  if filter.filter(node):&#xa;    result.add(node)&#xa;    if result.size &gt;= limit: break&#xa;  else: node.recycle()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="350" y="935" width="250" height="155" as="geometry" />
+        </mxCell>
+
+        <!-- ===== BOTTOM: UiObject & AccessibilityService ===== -->
+        <mxCell id="bottom-title" value="System Level Execution" style="text;html=1;fontSize=16;fontStyle=5;fontColor=#432D57;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1140" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- UiObject -->
+        <mxCell id="uiobject" value="&lt;b&gt;UiObject&lt;/b&gt; extends AccessibilityNodeInfoCompat&#xa;&#xa;Actions:                          Properties:&#xa;click() → ACTION_CLICK           text() → getText()&#xa;longClick() → ACTION_LONG_CLICK   desc() → getContentDescription()&#xa;setText(s) → ACTION_SET_TEXT      id() → getViewIdResourceName()&#xa;scrollUp/Down/Left/Right()        bounds() → getBoundsInScreen()&#xa;focus() → ACTION_FOCUS            className() → getClassName()&#xa;paste() → ACTION_PASTE            depth() → computed&#xa;&#xa;Tree Navigation: parent() | child(i) | children() | childCount()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1180" width="500" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- AccessibilityService -->
+        <mxCell id="a11y-service" value="&lt;b&gt;AccessibilityService&lt;/b&gt; (automator module)&#xa;&#xa;Event Processing:&#xa;onAccessibilityEvent(event) → dispatch to delegates&#xa;├─ TYPE_WINDOW_STATE_CHANGED → update mFastRootInActiveWindow&#xa;├─ TYPE_VIEW_FOCUSED → update cached root&#xa;└─ delegate.onAccessibilityEvent() → break on handled&#xa;&#xa;Node Access:&#xa;rootInActiveWindow → full UI tree root&#xa;fastRootInActiveWindow() → cached root (faster)&#xa;&#xa;Global Actions:&#xa;back() | home() | recents() | notifications()&#xa;&#xa;Gestures (API 24+):&#xa;gesture(start, duration, points[])&#xa;swipe(x1,y1,x2,y2,delay)&#xa;click(x,y) | longClick(x,y) | press(x,y,delay)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1410" width="500" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="arr8" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="uiobject" target="a11y-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr8l" value="performAction()" style="edgeLabel;html=1;fontSize=10;" vertex="1" connectable="0" parent="arr8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Android System -->
+        <mxCell id="android-sys" value="&lt;b&gt;Android System&lt;/b&gt;&#xa;AccessibilityNodeInfo.performAction()&#xa;AccessibilityService.performGlobalAction()&#xa;AccessibilityService.dispatchGesture()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#333333;fontColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="130" y="1720" width="350" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="arr9" style="rounded=1;strokeWidth=2;strokeColor=#333333;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="a11y-service" target="android-sys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== RIGHT: GlobalActionAutomator ===== -->
+        <mxCell id="global-action" value="&lt;b&gt;GlobalActionAutomator&lt;/b&gt;&#xa;(Coordinate-based actions)&#xa;&#xa;Navigation:&#xa;├─ back() → GLOBAL_ACTION_BACK&#xa;├─ home() → GLOBAL_ACTION_HOME&#xa;├─ recents() → GLOBAL_ACTION_RECENTS&#xa;├─ notifications() → GLOBAL_ACTION_NOTIFICATIONS&#xa;├─ quickSettings()&#xa;├─ splitScreen() (API 24+)&#xa;└─ powerDialog() (API 21+)&#xa;&#xa;Gestures:&#xa;├─ click(x, y) → 1px gesture&#xa;├─ longClick(x, y) → 400ms press&#xa;├─ swipe(x1,y1,x2,y2,delay)&#xa;├─ gesture(start, duration, points[])&#xa;└─ gesturesAsync(StrokeDescription...)&#xa;&#xa;ScreenMetrics:&#xa;Coordinate scaling for different resolutions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="1180" width="300" height="310" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow from GlobalAction to Android -->
+        <mxCell id="arr10" style="rounded=1;strokeWidth=2;strokeColor=#333333;exitX=0.3;exitY=1;entryX=0.8;entryY=0;" edge="1" parent="1" source="global-action" target="android-sys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== RIGHT: Delegate Pattern ===== -->
+        <mxCell id="delegate-panel" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="830" width="340" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="del-title" value="&lt;b&gt;AccessibilityDelegate Pattern&lt;/b&gt;" style="text;html=1;fontSize=13;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="650" y="835" width="300" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="del1" value="&lt;b&gt;Events API&lt;/b&gt;&#xa;key/touch/notification/gesture/toast" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="660" y="870" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="del2" value="&lt;b&gt;LayoutInspector&lt;/b&gt;&#xa;Capture UI tree for inspection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="660" y="915" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="del3" value="&lt;b&gt;KeyInterceptor&lt;/b&gt;&#xa;Intercept key events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="660" y="960" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="del4" value="&lt;b&gt;NotificationObserver&lt;/b&gt;&#xa;Toast and notification events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="660" y="1005" width="200" height="35" as="geometry" />
+        </mxCell>
+
+        <mxCell id="del-flow" value="AccessibilityService&#xa;.onAccessibilityEvent()&#xa;→ TreeMap&lt;priority, delegate&gt;&#xa;→ iterate by priority&#xa;→ first handler breaks" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="660" y="1050" width="300" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Memory Management Note ===== -->
+        <mxCell id="mem-note" value="&lt;b&gt;Memory Management&lt;/b&gt;&#xa;&#xa;AccessibilityNodeInfoAllocator:&#xa;- Tracks all allocated NodeInfo objects&#xa;- recycle() on non-matching nodes during search&#xa;- recycleAll() after search completion&#xa;- DEBUG mode: records allocation stack trace" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="1540" width="310" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Connection arrows from search to UiObject -->
+        <mxCell id="arr-search-uiobj" style="rounded=1;strokeWidth=1.5;strokeColor=#6c8ebf;exitX=0.5;exitY=1;entryX=0.2;entryY=0;" edge="1" parent="1" source="search-alg" target="uiobject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-search-label" value="returns&#xa;UiObject(s)" style="edgeLabel;html=1;fontSize=9;fontColor=#6c8ebf;" vertex="1" connectable="0" parent="arr-search-uiobj">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Connection from action hierarchy to UiObject -->
+        <mxCell id="arr-action-uiobj" style="rounded=1;strokeWidth=1.5;strokeColor=#d79b00;exitX=0;exitY=1;entryX=0.8;entryY=0;" edge="1" parent="1" source="action-hierarchy" target="uiobject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-action-label" value="performAction&#xa;on UiObject" style="edgeLabel;html=1;fontSize=9;fontColor=#d79b00;" vertex="1" connectable="0" parent="arr-action-uiobj">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

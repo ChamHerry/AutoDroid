@@ -1,0 +1,294 @@
+<mxfile host="app.diagrams.net" modified="2026-03-23" agent="Claude" version="1.0">
+  <diagram id="script-exec" name="Script Execution Call Chain">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="2200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Auto.js Script Execution Call Chain" style="text;html=1;fontSize=24;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Entry Points (Top) ===== -->
+        <mxCell id="entry-label" value="Entry Points (Script Triggers)" style="text;html=1;fontSize=14;fontStyle=5;align=left;fontColor=#B85450;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="300" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="entry1" value="&lt;b&gt;UI Direct&lt;/b&gt;&#xa;MyScriptListFragment&#xa;onItemClick()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="110" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="entry2" value="&lt;b&gt;Editor Run&lt;/b&gt;&#xa;EditActivity&#xa;EditorMenu.run()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="230" y="110" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="entry3" value="&lt;b&gt;Intent&lt;/b&gt;&#xa;ScriptIntents&#xa;handleIntent()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="400" y="110" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="entry4" value="&lt;b&gt;Timed Task&lt;/b&gt;&#xa;TaskReceiver&#xa;onReceive()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="570" y="110" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="entry5" value="&lt;b&gt;Tasker&lt;/b&gt;&#xa;FireSettingReceiver&#xa;Shortcut/Widget" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="740" y="110" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="entry6" value="&lt;b&gt;INRT Packaged&lt;/b&gt;&#xa;AssetsProjectLauncher&#xa;launch()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="910" y="110" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows to Scripts facade -->
+        <mxCell id="a1" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.15;entryY=0;" edge="1" parent="1" source="entry1" target="scripts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.3;entryY=0;" edge="1" parent="1" source="entry2" target="scripts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="entry3" target="scripts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.7;entryY=0;" edge="1" parent="1" source="entry4" target="scripts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.85;entryY=0;" edge="1" parent="1" source="entry5" target="scripts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Scripts Facade -->
+        <mxCell id="scripts" value="&lt;b&gt;Scripts.kt&lt;/b&gt; (Facade)&#xa;&#xa;run(ScriptFile) → execute with config&#xa;runRepeatedly(ScriptFile, loopTimes, delay)&#xa;edit(ScriptFile) → open EditActivity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="200" y="220" width="400" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- INRT direct path -->
+        <mxCell id="inrt-arrow" style="rounded=1;strokeWidth=1.5;strokeColor=#9673a6;dashed=1;exitX=0.5;exitY=1;entryX=0.85;entryY=0;" edge="1" parent="1" source="entry6" target="ses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-label" value="direct call&#xa;(skip Scripts)" style="edgeLabel;html=1;fontSize=9;fontColor=#9673a6;" vertex="1" connectable="0" parent="inrt-arrow">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow Scripts -> AutoJs.getInstance() -->
+        <mxCell id="a6" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="scripts" target="autojs-inst">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- AutoJs.getInstance() -->
+        <mxCell id="autojs-inst" value="&lt;b&gt;AutoJs.getInstance()&lt;/b&gt;&#xa;.getScriptEngineService()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="270" y="340" width="260" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow -> ScriptEngineService -->
+        <mxCell id="a7" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="autojs-inst" target="ses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ScriptEngineService -->
+        <mxCell id="ses" value="&lt;b&gt;ScriptEngineService.execute(ScriptSource, ExecutionConfig)&lt;/b&gt;&#xa;&#xa;1. Create ScriptExecutionTask(source, listener, config)&#xa;2. Wrap as RunnableScriptExecution / LoopedBasedJavaScriptExecution&#xa;3. Submit to executor (new Thread)&#xa;4. Notify ScriptExecutionObserver.onStart()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="430" width="520" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow -> ScriptEngineManager -->
+        <mxCell id="a8" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="ses" target="sem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ScriptEngineManager -->
+        <mxCell id="sem" value="&lt;b&gt;ScriptEngineManager.createEngineOfSource(source)&lt;/b&gt;&#xa;&#xa;Lookup: source.getEngineName() → Engine Supplier Map&#xa;JavaScriptSource → RhinoJavaScriptEngine&#xa;AutoFileSource → RhinoJavaScriptEngine&#xa;RootAutomator → RootAutomatorEngine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="575" width="520" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow -> Engine Init -->
+        <mxCell id="a9" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="sem" target="engine-init">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Engine Initialization -->
+        <mxCell id="engine-init" value="&lt;b&gt;RhinoJavaScriptEngine.init()&lt;/b&gt;&#xa;&#xa;1. enterContext() → AndroidContextFactory.enterContext()&#xa;2. createScope() → new TopLevelScope (ImporterTopLevel)&#xa;3. initRequireBuilder() → CommonJS module system&#xa;4. Execute init.js (bootstrap script from assets)&#xa;5. Set optimization level = -1 (interpreted mode)&#xa;6. Set language version = ES6" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="710" width="520" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow -> Runtime Init -->
+        <mxCell id="a10" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="engine-init" target="runtime-init">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Runtime Initialization -->
+        <mxCell id="runtime-init" value="&lt;b&gt;JavaScriptEngine.setRuntime(ScriptRuntime)&lt;/b&gt;&#xa;&#xa;ScriptRuntime.init() → Initialize all API modules:&#xa;├─ threads = new Threads(runtime)&#xa;├─ timers = new Timers(runtime)&#xa;├─ loopers = new Loopers(runtime)&#xa;├─ events = new Events(context, accessibilityBridge, runtime)&#xa;└─ sensors = new Sensors(context, runtime)&#xa;&#xa;Inject into scope: engine.put(&quot;runtime&quot;, runtime)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="860" width="520" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow -> Source Check -->
+        <mxCell id="a11" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="runtime-init" target="source-check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Source Mode Check -->
+        <mxCell id="source-check" value="&lt;b&gt;JavaScriptSource.getExecutionMode()&lt;/b&gt;&#xa;&#xa;Scan first 300 tokens using Rhino TokenStream:&#xa;├─ &quot;ui&quot;;  → EXECUTION_MODE_UI (0x01) → setup UI thread&#xa;├─ &quot;auto&quot;; → EXECUTION_MODE_AUTO (0x02)&#xa;│           → ensureAccessibilityServiceEnabled()&#xa;└─ (none) → EXECUTION_MODE_NORMAL (0x00)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1030" width="520" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow -> Compile -->
+        <mxCell id="a12" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="source-check" target="compile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Compilation -->
+        <mxCell id="compile" value="&lt;b&gt;RhinoJavaScriptEngine.doExecution(source)&lt;/b&gt;&#xa;&#xa;1. reader = source.getNonNullScriptReader()&#xa;2. reader = preprocess(reader) → script preprocessing&#xa;3. script = context.compileReader(reader, sourceName, lineNo, null)&#xa;   → Rhino AST → Interpreted bytecode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1175" width="520" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Decision: Continuation? -->
+        <mxCell id="decision" value="hasFeature&#xa;(CONTINUATION)?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="1310" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a13" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="compile" target="decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Yes: Continuation -->
+        <mxCell id="exec-cont" value="&lt;b&gt;context.executeScript&#xa;WithContinuations()&lt;/b&gt;&#xa;(supports pause/resume)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="180" y="1420" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a14" style="rounded=1;strokeWidth=2;exitX=0;exitY=0.5;entryX=0.5;entryY=0;" edge="1" parent="1" source="decision" target="exec-cont">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a14l" value="Yes" style="edgeLabel;html=1;fontSize=10;" vertex="1" connectable="0" parent="a14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- No: Normal -->
+        <mxCell id="exec-normal" value="&lt;b&gt;script.exec&#xa;(context, scope)&lt;/b&gt;&#xa;(standard execution)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="460" y="1420" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a15" style="rounded=1;strokeWidth=2;exitX=1;exitY=0.5;entryX=0.5;entryY=0;" edge="1" parent="1" source="decision" target="exec-normal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a15l" value="No" style="edgeLabel;html=1;fontSize=10;" vertex="1" connectable="0" parent="a15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Both converge to Execution Result -->
+        <mxCell id="exec-result" value="&lt;b&gt;Execution Result&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="310" y="1530" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a16" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.3;entryY=0;" edge="1" parent="1" source="exec-cont" target="exec-result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a17" style="rounded=1;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.7;entryY=0;" edge="1" parent="1" source="exec-normal" target="exec-result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Observer Notification -->
+        <mxCell id="observer" value="&lt;b&gt;ScriptExecutionObserver&lt;/b&gt;&#xa;&#xa;├─ onSuccess(execution, result)  → globalConsole.log()&#xa;├─ onException(execution, e)     → globalConsole.error()&#xa;└─ ScriptExecutionGlobalListener  → EventBus notify" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1610" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a18" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="exec-result" target="observer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Engine Destroy -->
+        <mxCell id="destroy" value="&lt;b&gt;engine.destroy()&lt;/b&gt;&#xa;&#xa;├─ runtime.onExit() → cleanup all resources&#xa;├─ sContextEngineMap.remove(context)&#xa;└─ Context.exit() → release Rhino context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1730" width="420" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a19" style="rounded=1;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="observer" target="destroy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Side Panel: INRT Encryption Flow ===== -->
+        <mxCell id="inrt-panel" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;dashed=1;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="780" y="575" width="320" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-panel-title" value="&lt;b&gt;INRT Packaged Script Flow&lt;/b&gt;" style="text;html=1;fontSize=13;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="790" y="580" width="280" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-step1" value="1. AssetsProjectLauncher.prepare()&#xa;   Load project.json&#xa;   Check buildId (incremental)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="800" y="615" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-step2" value="2. Copy assets/project/ → filesDir&#xa;   Init encryption key:&#xa;   key=MD5(pkg+ver+main)&#xa;   iv=MD5(buildId+name)[0:16]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="800" y="680" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-step3" value="3. XJavaScriptEngine.execute()&#xa;   Check EncryptedScriptFileHeader&#xa;   → ScriptEncryption.decrypt()&#xa;   → Execute as StringScriptSource" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="800" y="755" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-step4" value="4. ROOT auto-enable&#xa;   AccessibilityService&#xa;   (timeout 2s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="800" y="830" width="280" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Side Panel: ScriptRuntime API Map ===== -->
+        <mxCell id="api-panel" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;dashed=1;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="780" y="920" width="320" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="api-title" value="&lt;b&gt;ScriptRuntime API Map&lt;/b&gt;&#xa;(Injected into JS scope)" style="text;html=1;fontSize=13;fontStyle=1;fontColor=#82b366;align=center;" vertex="1" parent="1">
+          <mxGeometry x="790" y="925" width="300" height="35" as="geometry" />
+        </mxCell>
+
+        <mxCell id="api1" value="app → AppUtils" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="970" width="140" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api2" value="device → Device" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="950" y="970" width="130" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api3" value="console → Console" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="997" width="140" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api4" value="ui → UI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="950" y="997" width="130" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api5" value="dialogs → Dialogs" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1024" width="140" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api6" value="floaty → Floaty" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="950" y="1024" width="130" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api7" value="events → Events" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1051" width="140" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api8" value="threads → Threads" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="950" y="1051" width="130" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api9" value="timers → Timers" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1078" width="140" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api10" value="files → Files" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="950" y="1078" width="130" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api11" value="images → Images" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1105" width="140" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api12" value="sensors → Sensors" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="950" y="1105" width="130" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api13" value="automator → SimpleActionAutomator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1132" width="280" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api14" value="bridges → ScriptBridges (JS↔Java)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1159" width="280" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api15" value="plugins → Plugins" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1186" width="140" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="api16" value="colors → Colors" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="950" y="1186" width="130" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Side Panel: WrapFactory ===== -->
+        <mxCell id="wrap-panel" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="780" y="1280" width="320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="wrap-title" value="&lt;b&gt;JS ↔ Java Bridge (WrapFactory)&lt;/b&gt;" style="text;html=1;fontSize=12;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="790" y="1285" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="wrap1" value="String → bridges.toString()" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1310" width="250" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="wrap2" value="UiObjectCollection → bridges.asArray()" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1330" width="280" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="wrap3" value="View → ViewExtras.getNativeView()" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1350" width="280" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="wrap4" value="require('module') → CommonJS loader" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1370" width="280" height="18" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,317 @@
+<mxfile host="app.diagrams.net" modified="2026-03-23" agent="Claude" version="1.0">
+  <diagram id="module-dep" name="Module Dependency Architecture">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Auto.js Module Dependency Architecture" style="text;html=1;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- App Module -->
+        <mxCell id="app-group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="520" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="app-title" value="&lt;b&gt;:app&lt;/b&gt; (Application Module)" style="text;html=1;fontSize=16;fontStyle=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="90" y="85" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="app-ui" value="&lt;b&gt;ui/&lt;/b&gt;&#xa;MainActivity&#xa;EditActivity&#xa;SplashActivity&#xa;Fragments (5 tabs)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="120" width="150" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="app-model" value="&lt;b&gt;model/&lt;/b&gt;&#xa;Scripts.kt&#xa;ScriptFile&#xa;Explorers&#xa;AutoComplete" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="270" y="120" width="150" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="app-external" value="&lt;b&gt;external/&lt;/b&gt;&#xa;ScriptIntents&#xa;Tasker Plugin&#xa;Widget / Tile&#xa;BroadcastReceiver" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="440" y="120" width="150" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="app-timing" value="&lt;b&gt;timing/&lt;/b&gt;&#xa;TimedTaskManager&#xa;TimedTaskScheduler&#xa;TaskReceiver" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="240" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="app-network" value="&lt;b&gt;network/&lt;/b&gt;&#xa;REST API (Retrofit)&#xa;UserService&#xa;VersionService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="270" y="240" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="app-storage" value="&lt;b&gt;storage/&lt;/b&gt;&#xa;Database (Room)&#xa;TempFileStorage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="440" y="240" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="app-floating" value="&lt;b&gt;floating/&lt;/b&gt;&#xa;FloatyWindowManager&#xa;CircularMenu&#xa;LayoutInspector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="340" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="app-autojs-wrap" value="&lt;b&gt;autojs/&lt;/b&gt;&#xa;AutoJs (wrapper)&#xa;Build / Record / Key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="270" y="340" width="150" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- INRT Module -->
+        <mxCell id="inrt-group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="660" y="80" width="340" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-title" value="&lt;b&gt;:inrt&lt;/b&gt; (Packaged Runtime)" style="text;html=1;fontSize=16;fontStyle=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="670" y="85" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-splash" value="&lt;b&gt;SplashActivity&lt;/b&gt;&#xa;Permission Check&#xa;Script Launch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="680" y="120" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-log" value="&lt;b&gt;LogActivity&lt;/b&gt;&#xa;ConsoleView&#xa;Script Output" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="840" y="120" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-launcher" value="&lt;b&gt;launch/&lt;/b&gt;&#xa;AssetsProjectLauncher&#xa;GlobalProjectLauncher&#xa;- Assets Copy&#xa;- Script Encryption&#xa;- BuildId Check" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="680" y="210" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-autojs" value="&lt;b&gt;autojs/&lt;/b&gt;&#xa;AutoJs (custom)&#xa;XJavaScriptEngine&#xa;(Encryption support)&#xa;GlobalKeyObserver&#xa;AccessibilityTool&#xa;(ROOT enable)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="680" y="320" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="inrt-pref" value="&lt;b&gt;Pref&lt;/b&gt;&#xa;isFirstUsing&#xa;hideLogs&#xa;rootAccess" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="855" y="210" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Autojs Core Module -->
+        <mxCell id="autojs-group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="480" width="580" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="autojs-title" value="&lt;b&gt;:autojs&lt;/b&gt; (Core Engine - 223 files)" style="text;html=1;fontSize=16;fontStyle=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="90" y="485" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="autojs-engine" value="&lt;b&gt;engine/&lt;/b&gt;&#xa;ScriptEngine (interface)&#xa;RhinoJavaScriptEngine&#xa;LoopBasedJSEngine&#xa;RootAutomatorEngine&#xa;ScriptEngineManager&#xa;ScriptEngineService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="520" width="170" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="autojs-runtime" value="&lt;b&gt;runtime/&lt;/b&gt;&#xa;ScriptRuntime (hub)&#xa;@ScriptVariable APIs:&#xa;app, device, console&#xa;ui, dialogs, floaty&#xa;events, threads, timers&#xa;files, images, sensors&#xa;bridges, plugins" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="290" y="520" width="170" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="autojs-rhino" value="&lt;b&gt;rhino/&lt;/b&gt;&#xa;AndroidContextFactory&#xa;TopLevelScope&#xa;WrapFactory&#xa;RequireBuilder&#xa;(ES6 + Continuation)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="480" y="520" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="autojs-ui" value="&lt;b&gt;core/ui/&lt;/b&gt;&#xa;DynamicLayoutInflater&#xa;Js* Widgets&#xa;ViewAttributes&#xa;ResourceParser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="660" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="autojs-accessibility" value="&lt;b&gt;core/accessibility/&lt;/b&gt;&#xa;AccessibilityBridge&#xa;UiSelector&#xa;SimpleActionAutomator&#xa;NotificationListener" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="280" y="680" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="autojs-floaty" value="&lt;b&gt;core/floaty/&lt;/b&gt;&#xa;Floaty API&#xa;JsResizableWindow&#xa;JsRawWindow&#xa;FloatyService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="480" y="650" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="autojs-script" value="&lt;b&gt;script/&lt;/b&gt;&#xa;ScriptSource&#xa;JavaScriptFileSource&#xa;StringScriptSource&#xa;ExecutionConfig" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="770" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="autojs-execution" value="&lt;b&gt;execution/&lt;/b&gt;&#xa;ScriptExecution&#xa;RunnableScriptExecution&#xa;ScriptExecutionObserver" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="280" y="785" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="autojs-looper" value="&lt;b&gt;core/looper/&lt;/b&gt;&#xa;Loopers, Timers&#xa;Threads, Events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="480" y="760" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Automator Module -->
+        <mxCell id="automator-group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="720" y="480" width="360" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="automator-title" value="&lt;b&gt;:automator&lt;/b&gt; (Automation Engine - 49 files)" style="text;html=1;fontSize=16;fontStyle=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="730" y="485" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="automator-uiobj" value="&lt;b&gt;UiObject&lt;/b&gt;&#xa;extends AccessibilityNodeInfoCompat&#xa;click/longClick/setText&#xa;parent/child/children&#xa;find/findOne" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="740" y="520" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="automator-selector" value="&lt;b&gt;UiGlobalSelector&lt;/b&gt;&#xa;Chain Builder Pattern&#xa;text/id/desc/className&#xa;clickable/scrollable&#xa;bounds/depth/row/col" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="940" y="520" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="automator-filter" value="&lt;b&gt;filter/ (19 files)&lt;/b&gt;&#xa;Selector (composite)&#xa;TextFilters&#xa;IdFilter / DescFilters&#xa;BooleanFilter&#xa;BoundsFilter / IntFilter&#xa;StringMatches/Contains/..." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="740" y="640" width="170" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="automator-search" value="&lt;b&gt;search/&lt;/b&gt;&#xa;SearchAlgorithm&#xa;DFS (Stack)&#xa;BFS (Queue)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="930" y="640" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="automator-action" value="&lt;b&gt;simple_action/&lt;/b&gt;&#xa;SimpleAction&#xa;FilterAction&#xa;SearchTargetAction&#xa;DepthFirstSearch&#xa;SearchUpAction&#xa;ScrollAction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="740" y="770" width="150" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="automator-a11y" value="&lt;b&gt;accessibility/&lt;/b&gt;&#xa;AccessibilityService&#xa;AccessibilityDelegate&#xa;LayoutInspector&#xa;NodeInfoAllocator&#xa;KeyInterceptor&#xa;NotificationObserver" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="910" y="740" width="150" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="automator-global" value="&lt;b&gt;GlobalActionAutomator&lt;/b&gt;&#xa;back/home/recents&#xa;gesture/swipe/click&#xa;(coordinate-based)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="930" y="880" width="130" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Common Module -->
+        <mxCell id="common-group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="900" width="580" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="common-title" value="&lt;b&gt;:common&lt;/b&gt; (Foundation Library - 70+ files)" style="text;html=1;fontSize=16;fontStyle=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="90" y="905" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="common-app" value="&lt;b&gt;app/&lt;/b&gt;&#xa;GlobalAppContext&#xa;Fragment base&#xa;DialogUtils" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="940" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="common-pio" value="&lt;b&gt;pio/&lt;/b&gt;&#xa;PFiles (550 LOC)&#xa;PFile / Zip&#xa;read/write/copy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="250" y="940" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="common-util" value="&lt;b&gt;util/ (45+ classes)&lt;/b&gt;&#xa;ScreenMetrics, UiHandler&#xa;ViewUtil, IntentUtil&#xa;MD5, NetworkUtils" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="400" y="940" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="common-concurrent" value="&lt;b&gt;concurrent/ + event/&lt;/b&gt;&#xa;EventDispatcher&lt;L&gt;&#xa;ConcurrentArrayList&#xa;VolatileBox" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1020" width="170" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- External: Rhino Engine -->
+        <mxCell id="rhino" value="&lt;b&gt;Mozilla Rhino&lt;/b&gt;&#xa;JavaScript Engine (ES6)&#xa;Context / Scriptable / TopLevelScope&#xa;Continuation Support" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="120" width="230" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- External: Android System -->
+        <mxCell id="android" value="&lt;b&gt;Android System&lt;/b&gt;&#xa;AccessibilityService&#xa;WindowManager&#xa;PackageManager / JobScheduler" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="240" width="230" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Third Party -->
+        <mxCell id="thirdparty" value="&lt;b&gt;Third Party Libraries&lt;/b&gt;&#xa;RxJava2 / Retrofit / Glide&#xa;AndroidAnnotations&#xa;Material Dialogs / EventBus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="360" width="230" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Dependency Arrows -->
+        <!-- app -> autojs -->
+        <mxCell id="dep1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="app-group" target="autojs-group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dep1-label" value="depends on" style="edgeLabel;html=1;fontSize=10;fontColor=#6c8ebf;" vertex="1" connectable="0" parent="dep1">
+          <mxGeometry x="-0.2" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- app -> automator -->
+        <mxCell id="dep2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="app-group" target="automator-group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- app -> common -->
+        <mxCell id="dep3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#6c8ebf;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.2;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="app-group" target="common-group">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="184" y="450" />
+              <mxPoint x="50" y="450" />
+              <mxPoint x="50" y="890" />
+              <mxPoint x="196" y="890" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- inrt -> autojs -->
+        <mxCell id="dep4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#9673a6;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.7;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="inrt-group" target="autojs-group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dep4-label" value="depends on" style="edgeLabel;html=1;fontSize=10;fontColor=#9673a6;" vertex="1" connectable="0" parent="dep4">
+          <mxGeometry x="-0.2" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- inrt -> automator -->
+        <mxCell id="dep5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#9673a6;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="inrt-group" target="automator-group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- inrt -> common -->
+        <mxCell id="dep6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#9673a6;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.8;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="inrt-group" target="common-group">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="870" />
+              <mxPoint x="544" y="870" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- autojs -> automator -->
+        <mxCell id="dep7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="autojs-group" target="automator-group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dep7-label" value="depends on" style="edgeLabel;html=1;fontSize=10;fontColor=#82b366;" vertex="1" connectable="0" parent="dep7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- autojs -> common -->
+        <mxCell id="dep8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="autojs-group" target="common-group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- automator -> common -->
+        <mxCell id="dep9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#d79b00;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="automator-group" target="common-group">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="980" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- autojs -> rhino -->
+        <mxCell id="dep10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#432D57;dashed=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="autojs-rhino" target="rhino">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1100" y="520" />
+              <mxPoint x="1100" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- automator -> android -->
+        <mxCell id="dep11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#432D57;dashed=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="automator-a11y" target="android">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1100" y="800" />
+              <mxPoint x="1100" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- app -> thirdparty -->
+        <mxCell id="dep12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#432D57;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="app-group" target="thirdparty">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1090" y="250" />
+              <mxPoint x="1090" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="500" width="230" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-title" value="&lt;b&gt;Legend&lt;/b&gt;" style="text;html=1;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="505" width="230" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" value="" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="535" width="20" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="l1t" value=":app (Application)" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="533" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" value="" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="560" width="20" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="l2t" value=":inrt (Packaged Runtime)" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="558" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" value="" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="585" width="20" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="l3t" value=":autojs (Core Engine)" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="583" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" value="" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="610" width="20" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="l4t" value=":automator (Automation)" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="608" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" value="" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="635" width="20" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="l5t" value=":common (Foundation)" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="633" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l6" value="" style="rounded=1;fillColor=#76608a;strokeColor=#432D57;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="660" width="20" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="l6t" value="External Dependencies" style="text;html=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="658" width="150" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

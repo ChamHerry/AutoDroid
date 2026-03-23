@@ -1,0 +1,371 @@
+<mxfile host="app.diagrams.net" modified="2026-03-23" agent="Claude" version="1.0">
+  <diagram id="class-hierarchy" name="Core Class Hierarchy and Relationships">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Auto.js Core Class Hierarchy &amp; Relationships" style="text;html=1;fontSize=22;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="400" y="15" width="600" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ===== ScriptEngine Hierarchy ===== -->
+        <mxCell id="engine-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="420" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="engine-title" value="&lt;b&gt;ScriptEngine Hierarchy&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="50" y="65" width="250" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="se-intf" value="&lt;&lt;interface&gt;&gt;&#xa;&lt;b&gt;ScriptEngine&lt;S&gt;&lt;/b&gt;&#xa;&#xa;+ execute(S source)&#xa;+ forceStop()&#xa;+ destroy()&#xa;+ put(name, value)&#xa;+ setTag/getTag&#xa;+ isDestroyed()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="130" y="95" width="200" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="se-abstract" value="&lt;b&gt;AbstractScriptEngine&lt;/b&gt;&#xa;&#xa;- mTags: ConcurrentHashMap&#xa;- onDestroyListeners&#xa;- mException" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="130" y="250" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-se1" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="se-abstract" target="se-intf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="se-js" value="&lt;b&gt;JavaScriptEngine&lt;/b&gt;&#xa;&#xa;- mRuntime: ScriptRuntime&#xa;+ emit(event, args)&#xa;+ setRuntime()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="355" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-se2" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.3;entryY=1;" edge="1" parent="1" source="se-js" target="se-abstract">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="se-root" value="&lt;b&gt;RootAutomatorEngine&lt;/b&gt;&#xa;(root binary exec)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="260" y="355" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-se3" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.7;entryY=1;" edge="1" parent="1" source="se-root" target="se-abstract">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="se-rhino" value="&lt;b&gt;RhinoJavaScriptEngine&lt;/b&gt;&#xa;&#xa;- context: Rhino.Context&#xa;- mScriptable: TopLevelScope&#xa;- thread: Thread&#xa;+ doExecution(source)&#xa;+ enterContext()&#xa;+ WrapFactory (inner)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="455" width="200" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-se4" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="se-rhino" target="se-js">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="se-loop" value="&lt;b&gt;LoopBasedJavaScriptEngine&lt;/b&gt;&#xa;(maintains Looper)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="580" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-se5" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="se-loop" target="se-rhino">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="se-x" value="&lt;b&gt;XJavaScriptEngine&lt;/b&gt;&#xa;(INRT: encryption support)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="630" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-se6" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="se-x" target="se-loop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== ScriptSource Hierarchy ===== -->
+        <mxCell id="source-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="500" y="60" width="350" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="source-title" value="&lt;b&gt;ScriptSource Hierarchy&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="510" y="65" width="250" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ss-base" value="&lt;&lt;abstract&gt;&gt;&#xa;&lt;b&gt;ScriptSource&lt;/b&gt;&#xa;&#xa;+ name: String&#xa;+ getEngineName(): String" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="580" y="95" width="180" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ss-js" value="&lt;&lt;abstract&gt;&gt;&#xa;&lt;b&gt;JavaScriptSource&lt;/b&gt;&#xa;&#xa;+ getExecutionMode(): int&#xa;  (scan 300 tokens)&#xa;+ getScriptReader(): Reader&#xa;+ EXECUTION_MODE_UI (0x01)&#xa;+ EXECUTION_MODE_AUTO (0x02)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="195" width="210" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ss1" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="ss-js" target="ss-base">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ss-auto" value="&lt;b&gt;AutoFileSource&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="750" y="210" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ss2" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.8;entryY=1;" edge="1" parent="1" source="ss-auto" target="ss-base">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ss-file" value="&lt;b&gt;JavaScriptFileSource&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="530" y="335" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ss3" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.3;entryY=1;" edge="1" parent="1" source="ss-file" target="ss-js">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ss-string" value="&lt;b&gt;StringScriptSource&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="690" y="335" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ss4" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.7;entryY=1;" edge="1" parent="1" source="ss-string" target="ss-js">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== ScriptRuntime (Center Hub) ===== -->
+        <mxCell id="runtime-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="500" y="420" width="460" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="runtime-title" value="&lt;b&gt;ScriptRuntime (Central Hub)&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="510" y="425" width="280" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rt-box" value="&lt;b&gt;ScriptRuntime&lt;/b&gt;&#xa;&#xa;@ScriptVariable app: AppUtils&#xa;@ScriptVariable device: Device&#xa;@ScriptVariable console: Console&#xa;@ScriptVariable ui: UI&#xa;@ScriptVariable dialogs: Dialogs&#xa;@ScriptVariable floaty: Floaty&#xa;@ScriptVariable events: Events&#xa;@ScriptVariable threads: Threads&#xa;@ScriptVariable timers: Timers&#xa;@ScriptVariable loopers: Loopers&#xa;@ScriptVariable files: Files&#xa;@ScriptVariable images: Images&#xa;@ScriptVariable sensors: Sensors&#xa;@ScriptVariable media: Media&#xa;@ScriptVariable plugins: Plugins&#xa;@ScriptVariable bridges: ScriptBridges&#xa;automator: SimpleActionAutomator&#xa;accessibilityBridge: AccessibilityBridge" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="455" width="260" height="290" as="geometry" />
+        </mxCell>
+
+        <!-- Composition arrows from Runtime -->
+        <mxCell id="rt-to-engine" style="endArrow=diamond;endFill=1;strokeWidth=1.5;strokeColor=#b85450;exitX=0;exitY=0.2;entryX=1;entryY=0.5;" edge="1" parent="1" source="rt-box" target="se-js">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rt-to-engine-label" value="held by" style="edgeLabel;html=1;fontSize=9;fontColor=#b85450;" vertex="1" connectable="0" parent="rt-to-engine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Filter Hierarchy ===== -->
+        <mxCell id="filter-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="40" y="700" width="420" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="filter-title" value="&lt;b&gt;Filter Hierarchy (automator module)&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="50" y="705" width="300" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="f-intf" value="&lt;&lt;interface&gt;&gt;&#xa;&lt;b&gt;Filter&lt;/b&gt;&#xa;+ filter(UiObject): Boolean" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="160" y="735" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="f-selector" value="&lt;b&gt;Selector&lt;/b&gt;&#xa;LinkedList&lt;Filter&gt;&#xa;AND logic composite" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="810" width="130" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-f1a" style="endArrow=block;endFill=0;strokeWidth=1;exitX=0.5;exitY=0;entryX=0.3;entryY=1;" edge="1" parent="1" source="f-selector" target="f-intf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="f-string-eq" value="StringEqualsFilter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="60" y="875" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f-string-con" value="StringContainsFilter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="60" y="905" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f-string-sw" value="StringStartsWithFilter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="60" y="935" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f-string-ew" value="StringEndsWithFilter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="60" y="965" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f-string-match" value="StringMatchesFilter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="60" y="995" width="120" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="f-bool" value="BooleanFilter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="210" y="875" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f-bounds" value="BoundsFilter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="210" y="905" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f-int" value="IntFilter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="210" y="935" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f-id" value="IdFilter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="210" y="965" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f-pkg" value="PackageNameFilter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="210" y="995" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f-class" value="ClassNameFilters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="340" y="875" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f-desc" value="DescFilters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="340" y="905" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="f-text" value="TextFilters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="340" y="935" width="110" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from filters to interface -->
+        <mxCell id="arr-fimpl" style="endArrow=block;endFill=0;strokeWidth=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;dashed=1;" edge="1" parent="1" source="f-string-eq" target="f-intf">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="120" y="860" />
+              <mxPoint x="250" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-fimpl2" style="endArrow=block;endFill=0;strokeWidth=1;exitX=0.5;exitY=0;entryX=0.7;entryY=1;dashed=1;" edge="1" parent="1" source="f-bool" target="f-intf">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="265" y="860" />
+              <mxPoint x="286" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ===== SimpleAction Hierarchy ===== -->
+        <mxCell id="action-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="500" y="800" width="460" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="action-title" value="&lt;b&gt;SimpleAction Hierarchy (automator module)&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="510" y="805" width="350" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa-box" value="&lt;&lt;abstract&gt;&gt;&#xa;&lt;b&gt;SimpleAction&lt;/b&gt;&#xa;+ isValid: volatile Boolean&#xa;+ result: volatile Boolean&#xa;+ perform(root: UiObject): Boolean" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="835" width="230" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="fa-box" value="&lt;b&gt;FilterAction&lt;/b&gt;&#xa;- mFilter: Filter&#xa;+ perform(nodes)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b4d7f5;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="530" y="925" width="150" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-sa-fa" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.3;entryY=1;" edge="1" parent="1" source="fa-box" target="sa-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="scroll-box" value="&lt;b&gt;ScrollAction&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b4d7f5;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="710" y="925" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-sa-sc" style="endArrow=block;endFill=0;strokeWidth=1;exitX=0.5;exitY=0;entryX=0.6;entryY=1;" edge="1" parent="1" source="scroll-box" target="sa-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="scrollmax-box" value="&lt;b&gt;ScrollMaxAction&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b4d7f5;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="840" y="925" width="110" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-sa-sm" style="endArrow=block;endFill=0;strokeWidth=1;exitX=0.5;exitY=0;entryX=0.8;entryY=1;" edge="1" parent="1" source="scrollmax-box" target="sa-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sta-box" value="&lt;b&gt;SearchTargetAction&lt;/b&gt;&#xa;+ searchTarget(node): UiObject&#xa;+ performAction(node)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b4d7f5;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="990" width="200" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-fa-sta" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="sta-box" target="fa-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dfs-box2" value="&lt;b&gt;DepthFirstSearchTargetAction&lt;/b&gt;&#xa;DFS in subtree for able node" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b4d7f5;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1050" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-sta-dfs" style="endArrow=block;endFill=0;strokeWidth=1;exitX=0.3;exitY=0;entryX=0.3;entryY=1;" edge="1" parent="1" source="dfs-box2" target="sta-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="up-box" value="&lt;b&gt;SearchUpTargetAction&lt;/b&gt;&#xa;Walk up parents (max 20)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b4d7f5;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1050" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-sta-up" style="endArrow=block;endFill=0;strokeWidth=1;exitX=0.3;exitY=0;entryX=0.7;entryY=1;" edge="1" parent="1" source="up-box" target="sta-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== UiObject ===== -->
+        <mxCell id="uiobj-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="60" width="350" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="uiobj-title" value="&lt;b&gt;UiObject (automator module)&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="65" width="300" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a11y-compat" value="&lt;b&gt;AccessibilityNodeInfoCompat&lt;/b&gt;&#xa;(androidx library)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="95" width="250" height="35" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uiobj-box" value="&lt;b&gt;UiObject&lt;/b&gt;&#xa;&#xa;Actions:&#xa;  click(), longClick(), setText()&#xa;  scrollUp/Down/Left/Right()&#xa;  focus(), paste(), select()&#xa;&#xa;Tree:&#xa;  parent(), child(i), children()&#xa;  childCount(), depth()&#xa;&#xa;Search:&#xa;  find(selector), findOne(selector)&#xa;&#xa;Properties:&#xa;  text(), desc(), id(), bounds()&#xa;  className(), isClickable..." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="150" width="250" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-uiobj" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="uiobj-box" target="a11y-compat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== AutoJs Wrapper Classes ===== -->
+        <mxCell id="autojs-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="420" width="350" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="autojs-title2" value="&lt;b&gt;AutoJs Wrapper Classes&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="425" width="250" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="autojs-base" value="&lt;b&gt;com.stardust.autojs.AutoJs&lt;/b&gt;&#xa;(autojs module base)&#xa;&#xa;+ scriptEngineService&#xa;+ uiHandler&#xa;+ appUtils&#xa;+ globalConsole&#xa;+ layoutInspector&#xa;+ createRuntime()&#xa;+ ensureAccessibilityServiceEnabled()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="455" width="310" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="autojs-app" value="&lt;b&gt;org.autojs.autojs.autojs.AutoJs&lt;/b&gt;&#xa;(:app module override)&#xa;+ Layout Inspector integration&#xa;+ Notification listener" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="610" width="240" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-aj1" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="autojs-app" target="autojs-base">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="autojs-inrt" value="&lt;b&gt;com.stardust.auojs.inrt.autojs.AutoJs&lt;/b&gt;&#xa;(:inrt module override)&#xa;+ XJavaScriptEngine (encrypted)&#xa;+ ROOT accessibility enable&#xa;+ Inject SettingsActivity/LogActivity" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="690" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-aj2" style="endArrow=block;endFill=0;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.7;entryY=1;" edge="1" parent="1" source="autojs-inrt" target="autojs-base">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Design Patterns Legend ===== -->
+        <mxCell id="patterns" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="810" width="350" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="pat-title" value="&lt;b&gt;Design Patterns Used&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="815" width="300" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="pat1" value="&lt;b&gt;Builder:&lt;/b&gt; UiGlobalSelector chain, ScriptRuntime.Builder" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="845" width="320" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="pat2" value="&lt;b&gt;Strategy:&lt;/b&gt; SearchAlgorithm (DFS/BFS), Filter implementations" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="868" width="320" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="pat3" value="&lt;b&gt;Factory:&lt;/b&gt; ActionFactory, ScriptEngineManager" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="891" width="320" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="pat4" value="&lt;b&gt;Composite:&lt;/b&gt; Selector (multiple Filters AND logic)" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="914" width="320" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="pat5" value="&lt;b&gt;Template Method:&lt;/b&gt; SearchTargetAction.searchTarget()" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="937" width="320" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="pat6" value="&lt;b&gt;Observer:&lt;/b&gt; EventDispatcher, ScriptExecutionObserver" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="960" width="320" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="pat7" value="&lt;b&gt;Singleton:&lt;/b&gt; AutoJs.getInstance(), GlobalAppContext" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="983" width="320" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="pat8" value="&lt;b&gt;Facade:&lt;/b&gt; Scripts.kt, ScriptRuntime" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="1006" width="320" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="pat9" value="&lt;b&gt;Delegate:&lt;/b&gt; AccessibilityDelegate (event handling)" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="1029" width="320" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="pat10" value="&lt;b&gt;Proxy:&lt;/b&gt; ScriptEngineProxy, UI (ProxyObject)" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="1052" width="320" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1110" width="400" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-title" value="&lt;b&gt;UML Legend&lt;/b&gt;" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1115" width="100" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1" value="" style="endArrow=block;endFill=0;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="1150" as="sourcePoint" />
+            <mxPoint x="130" y="1150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg1t" value="extends / implements" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1142" width="130" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2" value="" style="endArrow=diamond;endFill=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="1175" as="sourcePoint" />
+            <mxPoint x="130" y="1175" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg2t" value="composition (has-a)" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1167" width="130" height="18" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

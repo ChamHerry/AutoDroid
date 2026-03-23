@@ -1,0 +1,277 @@
+<mxfile host="app.diagrams.net" modified="2026-03-23" agent="Claude" version="1.0">
+  <diagram id="layered" name="Layered Architecture Overview">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Auto.js Layered Architecture Overview" style="text;html=1;fontSize=24;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="300" y="15" width="500" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Layer 1: User Interaction ===== -->
+        <mxCell id="l1-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;opacity=50;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="1000" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="l1-label" value="&lt;b&gt;Layer 1: User Interaction&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#b85450;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="-20" y="90" width="200" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l1-user" value="&lt;b&gt;User&lt;/b&gt;&#xa;(Script Author)" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="85" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l1-ide" value="&lt;b&gt;App IDE&lt;/b&gt;&#xa;Edit/Run/Debug&#xa;Script Manager" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="170" y="80" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="l1-external" value="&lt;b&gt;External Trigger&lt;/b&gt;&#xa;Intent / Tasker&#xa;Widget / Shortcut&#xa;Timed Task" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="310" y="80" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="l1-inrt" value="&lt;b&gt;INRT Packaged&lt;/b&gt;&#xa;Auto-launch from&#xa;Assets project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="450" y="80" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="l1-floaty-menu" value="&lt;b&gt;Floating Menu&lt;/b&gt;&#xa;CircularMenu&#xa;LayoutInspector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="590" y="80" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="l1-console" value="&lt;b&gt;Console Output&lt;/b&gt;&#xa;LogActivity&#xa;ConsoleView" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="730" y="80" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="l1-js-ui" value="&lt;b&gt;Script UI&lt;/b&gt;&#xa;&quot;ui&quot; mode&#xa;Floating windows" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="80" width="120" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l1-stat" value="&lt;i&gt;:app / :inrt modules&lt;/i&gt;" style="text;html=1;fontSize=10;fontColor=#b85450;align=right;" vertex="1" parent="1">
+          <mxGeometry x="820" y="155" width="220" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Layer 2: Script Management ===== -->
+        <mxCell id="l2-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=50;" vertex="1" parent="1">
+          <mxGeometry x="50" y="210" width="1000" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-label" value="&lt;b&gt;Layer 2: Script Management&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#6c8ebf;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="-30" y="235" width="220" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l2-facade" value="&lt;b&gt;Scripts.kt&lt;/b&gt; (Facade)&#xa;run() / edit() / createShortcut()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="225" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-service" value="&lt;b&gt;ScriptEngineService&lt;/b&gt;&#xa;execute() / stopAll()&#xa;Manages all running scripts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="300" y="225" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-manager" value="&lt;b&gt;ScriptEngineManager&lt;/b&gt;&#xa;Engine registry&#xa;createEngineOfSource()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="225" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-observer" value="&lt;b&gt;ScriptExecutionObserver&lt;/b&gt;&#xa;onStart / onSuccess / onException" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="225" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-source" value="&lt;b&gt;ScriptSource&lt;/b&gt;&#xa;JavaScriptFileSource&#xa;StringScriptSource&#xa;AutoFileSource" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="280" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-exec" value="&lt;b&gt;ScriptExecution&lt;/b&gt;&#xa;RunnableScriptExecution&#xa;LoopedBasedExecution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="300" y="285" width="200" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-config" value="&lt;b&gt;ExecutionConfig&lt;/b&gt;&#xa;workingDir / delay&#xa;loopTimes / interval" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="285" width="170" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-timing" value="&lt;b&gt;TimedTaskManager&lt;/b&gt;&#xa;Schedule / Cancel&#xa;JobScheduler / AlarmManager" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="280" width="200" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l2-stat" value="&lt;i&gt;:autojs / :app modules&lt;/i&gt;" style="text;html=1;fontSize=10;fontColor=#6c8ebf;align=right;" vertex="1" parent="1">
+          <mxGeometry x="820" y="318" width="220" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Layer 3: JavaScript Engine ===== -->
+        <mxCell id="l3-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;opacity=50;" vertex="1" parent="1">
+          <mxGeometry x="50" y="360" width="1000" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="l3-label" value="&lt;b&gt;Layer 3: JavaScript Engine&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#82b366;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="-25" y="390" width="220" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l3-rhino" value="&lt;b&gt;RhinoJavaScriptEngine&lt;/b&gt;&#xa;Context / TopLevelScope&#xa;compileReader → exec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="375" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="l3-runtime" value="&lt;b&gt;ScriptRuntime&lt;/b&gt; (Central Hub)&#xa;All @ScriptVariable APIs&#xa;app/device/console/ui/events&#xa;threads/timers/files/images..." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="375" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l3-bridge" value="&lt;b&gt;ScriptBridges&lt;/b&gt;&#xa;JS ↔ Java type conversion&#xa;WrapFactory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="540" y="375" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="l3-require" value="&lt;b&gt;Module System&lt;/b&gt;&#xa;CommonJS require()&#xa;AssetModuleProvider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="375" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="l3-ctx" value="&lt;b&gt;AndroidContextFactory&lt;/b&gt;&#xa;ES6 / Optimization=-1&#xa;Instruction count monitor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="435" width="180" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="l3-events" value="&lt;b&gt;Events (EventEmitter)&lt;/b&gt;&#xa;key/touch/notification/gesture/toast&#xa;on() / once() / emit()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="445" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="l3-looper" value="&lt;b&gt;Loopers / Timers / Threads&lt;/b&gt;&#xa;setTimeout / setInterval&#xa;Thread management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="540" y="440" width="200" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l3-stat" value="&lt;i&gt;:autojs module + Mozilla Rhino&lt;/i&gt;" style="text;html=1;fontSize=10;fontColor=#82b366;align=right;" vertex="1" parent="1">
+          <mxGeometry x="810" y="470" width="230" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Layer 4: Automation & UI Framework ===== -->
+        <mxCell id="l4-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;opacity=50;" vertex="1" parent="1">
+          <mxGeometry x="50" y="510" width="1000" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="l4-label" value="&lt;b&gt;Layer 4: Automation &amp; UI&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#d79b00;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="-20" y="540" width="200" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l4-selector" value="&lt;b&gt;UiGlobalSelector&lt;/b&gt;&#xa;Chain builder&#xa;Filter composition&#xa;DFS / BFS search" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="525" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l4-uiobj" value="&lt;b&gt;UiObject&lt;/b&gt;&#xa;Node wrapper&#xa;Actions + Properties" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="250" y="525" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="l4-action" value="&lt;b&gt;SimpleAction&lt;/b&gt;&#xa;FilterAction&#xa;SearchTarget&#xa;DFS / SearchUp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="400" y="525" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l4-global" value="&lt;b&gt;GlobalActionAutomator&lt;/b&gt;&#xa;back/home/gesture&#xa;swipe/click(x,y)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="550" y="525" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="l4-ui-fw" value="&lt;b&gt;Dynamic UI Framework&lt;/b&gt;&#xa;DynamicLayoutInflater&#xa;Js* Widgets&#xa;ViewAttributes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="730" y="525" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l4-floaty" value="&lt;b&gt;Floaty System&lt;/b&gt;&#xa;JsResizableWindow&#xa;JsRawWindow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="595" width="140" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="l4-images" value="&lt;b&gt;Images API&lt;/b&gt;&#xa;Screenshot&#xa;Image recognition" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="240" y="595" width="130" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="l4-dialogs" value="&lt;b&gt;Dialogs API&lt;/b&gt;&#xa;Material Design&#xa;JsDialogBuilder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="390" y="595" width="130" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="l4-sensors" value="&lt;b&gt;Sensors / Media&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="540" y="600" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l4-stat" value="&lt;i&gt;:autojs + :automator modules&lt;/i&gt;" style="text;html=1;fontSize=10;fontColor=#d79b00;align=right;" vertex="1" parent="1">
+          <mxGeometry x="810" y="630" width="230" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Layer 5: Platform Bridge ===== -->
+        <mxCell id="l5-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;opacity=50;" vertex="1" parent="1">
+          <mxGeometry x="50" y="670" width="1000" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="l5-label" value="&lt;b&gt;Layer 5: Platform Bridge&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#9673a6;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="-20" y="690" width="200" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l5-a11y" value="&lt;b&gt;AccessibilityService&lt;/b&gt;&#xa;Event dispatch&#xa;Node tree access&#xa;Global actions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="685" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l5-bridge" value="&lt;b&gt;AccessibilityBridge&lt;/b&gt;&#xa;MODE_NORMAL / MODE_FAST&#xa;ensureServiceEnabled()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="250" y="685" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="l5-floaty-svc" value="&lt;b&gt;FloatyService&lt;/b&gt;&#xa;WindowManager&#xa;addView / removeView" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="450" y="685" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="l5-alloc" value="&lt;b&gt;NodeInfoAllocator&lt;/b&gt;&#xa;Memory tracking&#xa;recycle management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="685" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="l5-shell" value="&lt;b&gt;Shell / Root&lt;/b&gt;&#xa;ProcessShell&#xa;RootAutomator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="790" y="685" width="130" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l5-stat" value="&lt;i&gt;:automator + :common modules&lt;/i&gt;" style="text;html=1;fontSize=10;fontColor=#9673a6;align=right;" vertex="1" parent="1">
+          <mxGeometry x="810" y="750" width="230" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Layer 6: Foundation ===== -->
+        <mxCell id="l6-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;opacity=50;" vertex="1" parent="1">
+          <mxGeometry x="50" y="790" width="1000" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="l6-label" value="&lt;b&gt;Layer 6: Foundation&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#666666;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="-5" y="800" width="170" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l6-context" value="&lt;b&gt;GlobalAppContext&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="805" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="l6-pfiles" value="&lt;b&gt;PFiles&lt;/b&gt;&#xa;(File I/O)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="220" y="800" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="l6-event" value="&lt;b&gt;EventDispatcher&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="340" y="805" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="l6-screen" value="&lt;b&gt;ScreenMetrics&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="480" y="805" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="l6-conc" value="&lt;b&gt;ConcurrentArrayList&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="805" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="l6-utils" value="&lt;b&gt;ViewUtil / IntentUtil / MD5 / UiHandler ...&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="750" y="805" width="280" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="l6-stat" value="&lt;i&gt;:common module (70+ utility classes)&lt;/i&gt;" style="text;html=1;fontSize=10;fontColor=#666666;align=right;" vertex="1" parent="1">
+          <mxGeometry x="810" y="845" width="230" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Layer 7: Android System ===== -->
+        <mxCell id="l7-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#333333;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="50" y="890" width="1000" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l7-label" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Android System&lt;/font&gt;&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="897" width="200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="l7-1" value="&lt;font color=&quot;#ffffff&quot;&gt;AccessibilityNodeInfo&lt;/font&gt;" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="900" width="140" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="l7-2" value="&lt;font color=&quot;#ffffff&quot;&gt;WindowManager&lt;/font&gt;" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="430" y="900" width="100" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="l7-3" value="&lt;font color=&quot;#ffffff&quot;&gt;PackageManager&lt;/font&gt;" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="540" y="900" width="100" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="l7-4" value="&lt;font color=&quot;#ffffff&quot;&gt;JobScheduler&lt;/font&gt;" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="650" y="900" width="80" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="l7-5" value="&lt;font color=&quot;#ffffff&quot;&gt;GestureDescription&lt;/font&gt;" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="740" y="900" width="120" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="l7-6" value="&lt;font color=&quot;#ffffff&quot;&gt;SharedPreferences&lt;/font&gt;" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="900" width="110" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="l7-7" value="&lt;font color=&quot;#ffffff&quot;&gt;MediaProjection&lt;/font&gt;" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="920" width="110" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="l7-8" value="&lt;font color=&quot;#ffffff&quot;&gt;SensorManager&lt;/font&gt;" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="400" y="920" width="100" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- Stats -->
+        <mxCell id="stats" value="&lt;b&gt;Project Stats:&lt;/b&gt; 5 modules | 400+ source files | 223 core engine files | 49 automator files | 70+ common utilities" style="text;html=1;fontSize=11;fontColor=#333333;align=center;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="200" y="970" width="700" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Down arrows between layers -->
+        <mxCell id="down1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=3;strokeColor=#cccccc;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fillColor=#f5f5f5;" edge="1" parent="1" source="l1-bg" target="l2-bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="down2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=3;strokeColor=#cccccc;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fillColor=#f5f5f5;" edge="1" parent="1" source="l2-bg" target="l3-bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="down3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=3;strokeColor=#cccccc;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fillColor=#f5f5f5;" edge="1" parent="1" source="l3-bg" target="l4-bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="down4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=3;strokeColor=#cccccc;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fillColor=#f5f5f5;" edge="1" parent="1" source="l4-bg" target="l5-bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="down5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=3;strokeColor=#cccccc;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fillColor=#f5f5f5;" edge="1" parent="1" source="l5-bg" target="l6-bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="down6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=3;strokeColor=#cccccc;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fillColor=#f5f5f5;" edge="1" parent="1" source="l6-bg" target="l7-bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-03-23T10:00:00.000Z" agent="Claude" version="2.0">
+  <diagram id="arch-overview" name="AutoDroid Runtime Architecture">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="AutoDroid — Runtime Architecture (Dual Channel)" style="text;html=1;fontSize=22;fontStyle=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="300" y="15" width="1000" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== Channel A: Node.js (left, planned) ========== -->
+        <mxCell id="chA" value="Channel A: Embedded Node.js Scripts (planned)" style="swimlane;startSize=25;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;fontSize=13;fontStyle=1;html=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="700" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="w1" value="Worker Thread 1&#xa;(V8 Isolate)&#xa;script_a.mjs" style="rounded=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;html=1;" vertex="1" parent="chA">
+          <mxGeometry x="15" y="35" width="140" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2" value="Worker Thread 2&#xa;(V8 Isolate)&#xa;script_b.mjs" style="rounded=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;html=1;" vertex="1" parent="chA">
+          <mxGeometry x="170" y="35" width="140" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="sdk" value="@autojs/* SDK&#xa;(7 packages)&#xa;+ npm ecosystem" style="rounded=1;whiteSpace=wrap;fillColor=#ffd966;strokeColor=#d6b656;fontSize=10;html=1;" vertex="1" parent="chA">
+          <mxGeometry x="325" y="35" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="libnode" value="libnode.so&#xa;Node.js 22 LTS&#xa;V8 + libuv" style="rounded=1;whiteSpace=wrap;fillColor=#ffd966;strokeColor=#d6b656;fontSize=10;html=1;" vertex="1" parent="chA">
+          <mxGeometry x="490" y="35" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="napi-bridge" value="C++17 Bridge&#xa;N-API + JNI&#xa;type_mapping" style="rounded=1;whiteSpace=wrap;fillColor=#fce5cd;strokeColor=#d79b00;fontSize=10;html=1;" vertex="1" parent="chA">
+          <mxGeometry x="15" y="100" width="250" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="evtbridge" value="Event Bridge&#xa;napi_threadsafe_function" style="rounded=1;whiteSpace=wrap;fillColor=#fce5cd;strokeColor=#d79b00;fontSize=10;html=1;" vertex="1" parent="chA">
+          <mxGeometry x="280" y="100" width="200" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== Channel B: HTTP REST API (right, implemented) ========== -->
+        <mxCell id="chB" value="Channel B: HTTP REST API (implemented)" style="swimlane;startSize=25;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;fontSize=13;fontStyle=1;html=1;" vertex="1" parent="1">
+          <mxGeometry x="790" y="60" width="750" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="clients" value="External Clients&#xa;VS Code | Python | AI Agent | curl" style="rounded=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;html=1;" vertex="1" parent="chB">
+          <mxGeometry x="15" y="32" width="220" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="httpsvr" value="HttpServer (port 8080)&#xa;Raw ServerSocket&#xa;Coroutine IO pool" style="rounded=1;whiteSpace=wrap;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;html=1;" vertex="1" parent="chB">
+          <mxGeometry x="15" y="80" width="220" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="mw" value="Middleware&#xa;CORS | Logger" style="rounded=1;whiteSpace=wrap;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;html=1;" vertex="1" parent="chB">
+          <mxGeometry x="250" y="32" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="router" value="Router&#xa;Regex + :params&#xa;GET/POST/PUT/DELETE" style="rounded=1;whiteSpace=wrap;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;html=1;" vertex="1" parent="chB">
+          <mxGeometry x="250" y="80" width="150" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctrl" value="Controllers (9)&#xa;&#xa;Status | Action | Ui&#xa;App | Device | Shell&#xa;File | Log | Script" style="rounded=1;whiteSpace=wrap;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;html=1;" vertex="1" parent="chB">
+          <mxGeometry x="420" y="32" width="160" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="resp" value="Response&#xa;sendJson()&#xa;sendError()" style="rounded=1;whiteSpace=wrap;fillColor=#b6d7a8;strokeColor=#82b366;fontSize=10;html=1;" vertex="1" parent="chB">
+          <mxGeometry x="600" y="32" width="120" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- client → httpsvr -->
+        <mxCell id="c2h" style="rounded=1;strokeColor=#82b366;" edge="1" source="clients" target="httpsvr" parent="chB">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- httpsvr → router -->
+        <mxCell id="h2r" style="rounded=1;strokeColor=#82b366;" edge="1" source="httpsvr" target="router" parent="chB">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- router → ctrl -->
+        <mxCell id="r2c" style="rounded=1;strokeColor=#82b366;" edge="1" source="router" target="ctrl" parent="chB">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== Merge Point: AdapterContainer ========== -->
+        <mxCell id="ac-bar" value="&lt;b&gt;AdapterContainer&lt;/b&gt; (Hilt DI) — Both channels call the same Adapter instances" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6666;fontColor=#ffffff;strokeColor=#CC0000;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="230" width="1480" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Channel A → AdapterContainer -->
+        <mxCell id="a2ac" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#d6b656;dashed=1;" edge="1" parent="1" source="chA" target="ac-bar">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Channel B → AdapterContainer -->
+        <mxCell id="b2ac" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="chB" target="ac-bar">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== Kotlin Adapter Layer ========== -->
+        <mxCell id="L3" value="Kotlin Adapter Layer (com.autodroid.adapter)" style="swimlane;startSize=25;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;fontSize=13;fontStyle=1;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="280" width="1480" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="aa" value="AutomatorAdapter&#xa;findOne / find&#xa;click / setText&#xa;swipe / gesture&#xa;NodePool" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#666666;fontSize=10;html=1;" vertex="1" parent="L3">
+          <mxGeometry x="10" y="30" width="150" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="apa" value="AppAdapter&#xa;toast / launchApp&#xa;clipboard&#xa;getAppName" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#666666;fontSize=10;html=1;" vertex="1" parent="L3">
+          <mxGeometry x="175" y="30" width="130" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="da" value="DeviceAdapter&#xa;screenSize&#xa;battery / vibrate&#xa;brightness" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#666666;fontSize=10;html=1;" vertex="1" parent="L3">
+          <mxGeometry x="320" y="30" width="130" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="sa" value="ShellAdapter&#xa;exec / execRoot&#xa;isRootAvailable" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#666666;fontSize=10;html=1;" vertex="1" parent="L3">
+          <mxGeometry x="465" y="30" width="130" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="ea" value="EventAdapter&#xa;A11y Events&#xa;Key Events&#xa;native callback" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#666666;fontSize=10;html=1;" vertex="1" parent="L3">
+          <mxGeometry x="610" y="30" width="130" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="sta" value="StorageAdapter&#xa;SharedPrefs&#xa;get / set / keys" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#666666;fontSize=10;html=1;" vertex="1" parent="L3">
+          <mxGeometry x="755" y="30" width="130" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="ua" value="UIAdapter&#xa;floaty window&#xa;dialog" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#666666;fontSize=10;html=1;" vertex="1" parent="L3">
+          <mxGeometry x="900" y="30" width="130" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="pm" value="ProjectManager&#xa;CRUD / import&#xa;project.json" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#666666;fontSize=10;html=1;" vertex="1" parent="L3">
+          <mxGeometry x="1045" y="30" width="130" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="tc" value="TypeConverter&#xa;Rect/Map&#xa;JSON bridge" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;strokeColor=#666666;fontSize=10;html=1;" vertex="1" parent="L3">
+          <mxGeometry x="1190" y="30" width="120" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="ame" value="automator/ module: UiObject | UiGlobalSelector | SelectorParser | Filter | SearchAlgorithm (DFS/BFS) | GlobalActionAutomator  (62 tests)" style="rounded=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;html=1;" vertex="1" parent="L3">
+          <mxGeometry x="10" y="125" width="700" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== Android System Layer ========== -->
+        <mxCell id="L4" value="Android System (API 26 ~ 35)" style="swimlane;startSize=25;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;fontSize=13;fontStyle=1;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="470" width="1480" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="a11y" value="AccessibilityService&#xa;UI node tree&#xa;dispatchGesture&#xa;performGlobalAction" style="rounded=1;whiteSpace=wrap;fillColor=#e6e6e6;strokeColor=#999999;fontSize=10;html=1;" vertex="1" parent="L4">
+          <mxGeometry x="20" y="32" width="200" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="wm" value="WindowManager&#xa;Overlay windows&#xa;TYPE_APPLICATION_OVERLAY" style="rounded=1;whiteSpace=wrap;fillColor=#e6e6e6;strokeColor=#999999;fontSize=10;html=1;" vertex="1" parent="L4">
+          <mxGeometry x="240" y="32" width="200" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="pkm" value="PackageManager&#xa;App info query&#xa;startActivity" style="rounded=1;whiteSpace=wrap;fillColor=#e6e6e6;strokeColor=#999999;fontSize=10;html=1;" vertex="1" parent="L4">
+          <mxGeometry x="460" y="32" width="180" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="mp" value="MediaProjection&#xa;Screenshot (planned)&#xa;ImageReader" style="rounded=1;whiteSpace=wrap;fillColor=#e6e6e6;strokeColor=#999999;fontSize=10;html=1;" vertex="1" parent="L4">
+          <mxGeometry x="660" y="32" width="180" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="sysapi" value="System APIs&#xa;SharedPreferences&#xa;ProcessBuilder (Shell)&#xa;Vibrator / Display" style="rounded=1;whiteSpace=wrap;fillColor=#e6e6e6;strokeColor=#999999;fontSize=10;html=1;" vertex="1" parent="L4">
+          <mxGeometry x="860" y="32" width="180" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="compui" value="Compose UI&#xa;Dashboard | Logs&#xa;ScriptList | Settings&#xa;Material 3 | Hilt" style="rounded=1;whiteSpace=wrap;fillColor=#e6e6e6;strokeColor=#999999;fontSize=10;html=1;" vertex="1" parent="L4">
+          <mxGeometry x="1060" y="32" width="180" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="fgsvc" value="ForegroundService&#xa;(keep alive)" style="rounded=1;whiteSpace=wrap;fillColor=#e6e6e6;strokeColor=#999999;fontSize=10;html=1;" vertex="1" parent="L4">
+          <mxGeometry x="1260" y="32" width="140" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Adapter → System arrows -->
+        <mxCell id="ar1" style="rounded=1;strokeColor=#aaaaaa;" edge="1" source="aa" target="a11y" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ar2" style="rounded=1;strokeColor=#aaaaaa;" edge="1" source="apa" target="pkm" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ar3" style="rounded=1;strokeColor=#aaaaaa;" edge="1" source="da" target="sysapi" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ar4" style="rounded=1;strokeColor=#aaaaaa;" edge="1" source="sa" target="sysapi" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ar5" style="rounded=1;strokeColor=#aaaaaa;" edge="1" source="ea" target="a11y" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ar6" style="rounded=1;strokeColor=#aaaaaa;" edge="1" source="sta" target="sysapi" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ar7" style="rounded=1;strokeColor=#aaaaaa;" edge="1" source="ua" target="wm" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== HTTP API Endpoint Reference ========== -->
+        <mxCell id="api-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="610" width="1480" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="api-title" value="&lt;b&gt;HTTP REST API Endpoints (Channel B)&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="80" y="615" width="400" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="api-actions" value="&lt;b&gt;/api/actions/*&lt;/b&gt;&#xa;&#xa;POST click {x, y}&#xa;POST longClick {x, y}&#xa;POST swipe {x1,y1,x2,y2}&#xa;POST key {action}&#xa;POST gesture {points}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;align=left;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="80" y="645" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="api-ui" value="&lt;b&gt;/api/ui/*&lt;/b&gt;&#xa;&#xa;GET  dump&#xa;POST find {selector}&#xa;POST click {selector}&#xa;POST input {selector,text}&#xa;POST scroll {selector}&#xa;POST wait {selector}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;align=left;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="280" y="645" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="api-app" value="&lt;b&gt;/api/app/*&lt;/b&gt;&#xa;&#xa;POST launch {pkg}&#xa;POST toast {msg}&#xa;GET  clipboard&#xa;POST clipboard {text}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;align=left;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="480" y="645" width="170" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="api-device" value="&lt;b&gt;/api/device/*&lt;/b&gt;&#xa;&#xa;GET info&#xa;GET screen&#xa;GET battery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;align=left;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="670" y="645" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="api-shell" value="&lt;b&gt;/api/shell/*&lt;/b&gt;&#xa;&#xa;POST exec {cmd}&#xa;POST execRoot {cmd}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;align=left;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="830" y="645" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="api-files" value="&lt;b&gt;/api/files/*&lt;/b&gt;&#xa;&#xa;GET  read&#xa;POST write" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;align=left;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="645" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="api-misc" value="&lt;b&gt;/api/status&lt;/b&gt; GET&#xa;&lt;b&gt;/api/logs&lt;/b&gt; GET&#xa;&lt;b&gt;/api/scripts/*&lt;/b&gt; (TODO)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;align=left;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="645" width="200" height="50" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

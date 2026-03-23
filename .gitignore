@@ -1,0 +1,39 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Node
+node_modules/
+sdk/packages/*/dist/
+
+# Native
+*.so
+*.a
+
+# App
+app/build/
+automator/build/
+app/src/main/jniLibs/arm64-v8a/libnode.so
+app/src/main/jniLibs/x86_64/libnode.so
+app/src/main/assets/web/
+
+# Serena / Spec workflow / Claude
+.serena/
+.spec-workflow/
+.claude/
+
+# Test coverage reports
+web/coverage/
+
+# Vite scaffold leftovers
+web/public/
+web/src/assets/
+web/README.md
+package*
